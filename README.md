@@ -1,27 +1,3 @@
-# 云帆培训考试系统 开源版
-
-# 项目演示
-开源版本：https://lite.yfhl.net  
-管理账号：admin/admin    
-学员账号：person/person
-
-注意事项：演示环境数据每天晚上会重新初始化，不要往上面导入重要数据；如果账号密码被改无法登录，请联系我们；或等到第二天再访问 :joy: 
-
-# 商业版本
-如果开源版本无法满足您的需求，或者有需求需要定制，可以考虑我们的商业版本     
-商业版演示地址：https://exam.yfhl.net   
-商业版官网地址：https://www.yfhl.net/?plan=ghtrain
-
-QQ交流群二：757328773
-
-QQ交流群一：865330294（已满）
-
-# 商业版咨询
-杨经理：     
-    邮箱：626264481@qq.com   
-    手机：18710213152 
-    微信号：youyouwx0613     
-
 # 介绍
 一款多角色在线培训考试系统，系统集成了用户管理、角色管理、部门管理、题库管理、试题管理、试题导入导出、考试管理、在线考试、错题训练等功能，考试流程完善。
 
@@ -55,6 +31,9 @@ JDK 1.8+  [点此下载](https://cdn.yfhl.net/java-win/jdk-8u181-windows-x64.exe
 Mysql5.7+  [点此下载](https://cdn.yfhl.net/java-win/mysql-installer-community-5.7.31.0.msi)    
 
 # 安装资源
+
+#### 后端
+
 1、安装JDK1.8    
 https://cdn.yfhl.net/java-win/jdk-8u181-windows-x64.exe     
 
@@ -65,24 +44,60 @@ https://cdn.yfhl.net/java-win/mysql-installer-community-5.7.31.0.msi
 -- 安装数据库管理工具    
 https://cdn.yfhl.net/java-win/SQLyog.12.3.1.0.zip    
 
-# 安装视频    
-https://www.ixigua.com/7041491265027834381?utm_source=xiguastudio
+3、安装IntelliJ IEDA
+
+#### 前端
+
+1、下载安装mvn（nodejs管理器）
+
+2、通过nvm下载安装nodejs（16.x.x及以上版本）
+
+3、安装VS code
 
 # 快速运行  
-1、自行安装MySQL数据库（版本最好是5.7），将`安装资源中`的`数据库初始化.sql`导入到安装好的数据库  
+
+#### 后端运行
+
+1、自行安装MySQL数据库（版本最好是5.7），将`数据库初始化.sql`导入到安装好的数据库  
 2、安装Java环境，要求JDK版本大于1.8  
-3、请修改外置配置文件：application-local.yml 改成您自己的MySQL配置  
-4、Windows通过start.bat运行，Linux运行start.sh运行  
-5、如果无意外，可通过：http://localhost:8101 访问到项目了  
-6、管理员账号密码：admin/admin 学员账号：person/person  
- 
-# 其它支持
-网站：https://www.jeedocm.com/?plan=ghtrain
 
-QQ交流群二：757328773
+3、确保maven和java配置好
 
-QQ交流群一：865330294（已满）
+4、请修改外置配置文件：application-local.yml 改成您自己的MySQL配置  
 
+5、终端运行：mvn spring-boot:run
+
+6、如果无意外，可通过：http://localhost:8101 访问到项目了  
+7、管理员账号密码：admin/admin 学员账号：person/person  
+
+#### 前端运行
+
+1、下载包：npm install
+
+2、配置代理（vue.config.js）
+
+```
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:8101',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      },
+      '/exam': {
+        target: 'http://127.0.0.1:8101',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/exam': ''
+        }
+      }
+    }
+```
+
+3、运行：npm run dev
+
+# 界面
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1207/173238_e6c22c67_2189748.jpeg "17-32-10.jpg")
 ![主界面](https://images.gitee.com/uploads/images/2020/1019/182239_4a87af30_2189748.jpeg "222.jpg")
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1019/182532_04c42741_2189748.jpeg "444.jpg")
